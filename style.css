@@ -1,0 +1,32 @@
+body {
+    background: #4d92e6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.question-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 40px auto;
+    padding: 50px 80px;
+    max-width: 70%;
+}
+
+input{
+    display: block;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 8px;
+    border: 1px solid black;
+}
+
+button{
+    background-color: #4d92e6;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: 1px solid #4d92e6;
+
+}
