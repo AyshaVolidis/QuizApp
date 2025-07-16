@@ -106,3 +106,23 @@ button{
     display: flex;
     justify-content:flex-end;
 }
+
+.Leader{
+    display: flex;
+    justify-items: baseline;
+    margin: 10px auto;
+}
+
+
+.Leader h3{
+    margin-right: 20px;
+    font-size: 16px;
+    color: rgb(97, 9, 27);
+}
+
+.Leader div{
+    background-color: #4d92e6;
+    margin-right: 5px;
+    margin-top: 16px;
+    height: 20px;
+}

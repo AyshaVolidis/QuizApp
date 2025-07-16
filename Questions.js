@@ -13,8 +13,8 @@ let Questions = [
     },
     {
         Id: 3,
-        text: "Which keyword is used to declare a variable with block scope?",
-        rightAnswer: "let",
+        text: "Which keyword is not used to declare a variable?",
+        rightAnswer: "define",
         options: ["var", "let", "const", "define"]
     },
     {
@@ -31,7 +31,7 @@ let Questions = [
     },
     {
         Id: 6,
-        text: "Which loop checks the condition after the loop body?",
+        text: "Which loop checks the condition after the loop body execute at least once?",
         rightAnswer: "do-while",
         options: ["for", "while", "do-while", "foreach"]
     },
