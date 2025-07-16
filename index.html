@@ -7,7 +7,7 @@
     <title>Test</title>
 </head>
 <body>
-    <div class="question-box">
+    <div id="interface1" class="question-box" style="display: none;">
         <h2>Hello, Dear Student 🖐️</h2>
         <h4>This is a game represnet 10 question in programming to test your knowledge</h4>
         <h4>This instraction to pass quiz:</h4>
@@ -19,6 +19,30 @@
         <button id="startBtn" >Start Quiz</button>
     </div>
 
-    <script src="app.js"></script>
+    <div id="interfaceQ" class="question-box">
+        <h1>Quiz</h1>
+        <div class="progress-container">
+            <div class="progress-bar" style="width: 10%;"></div>
+        </div>
+        <h3 id="questionNum">Question 1/10</h3>
+        <h3 id="questionText"></h3>
+        <div id="sectionOptions">
+            <!-- <div class=" option-card " >
+                <input type="radio" id="optionA" name="option" class="radio-input">
+                <label for="optionA" class="radio-label">Option A</label>
+            </div>
+            <div class=" option-card " >
+                <input type="radio" id="optionA" name="option" class="radio-input">
+                <label for="optionA" class="radio-label">Option A</label>
+            </div> -->
+        </div>
+
+        <div class="btns">
+            <button id="Next" class="btn-finish" style="display: none;">Save and Next</button>
+            <button id="Finish" class="btn-finish">Finish Exam</button>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
