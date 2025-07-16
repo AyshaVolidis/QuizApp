@@ -1,0 +1,108 @@
+body {
+    background: #4d92e6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.question-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin: 40px auto;
+    padding: 50px 80px;
+    max-width: 70%;
+}
+
+input{
+    display: block;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 8px;
+    border: 1px solid black;
+}
+
+button{
+    background-color: #4d92e6;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: 1px solid #4d92e6;
+    cursor: pointer;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: gray;
+  border-radius: 10px;
+  height: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+
+.option-card {
+    transition: transform 0.2s ease, background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    background-color: white;
+    border: 1px solid rgb(128, 150, 211);
+}
+
+.option-card:hover {
+    background-color: #d0e3f7;
+    transform: scale(1.02);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.selected-option {
+    background-color: #a5caff;
+    border: 2px solid #4d92e6;
+}
+
+.radio-input {
+    display: none;
+}
+
+.radio-label {
+    display: flex; 
+    align-items: center; 
+    cursor: pointer;
+}
+
+.radio-label::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border: 2px solid #4d92e6;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin-right: 10px; 
+}
+
+.radio-input:checked + .radio-label::before {
+    background-color: #4d92e6;
+    border-color: #4d92e6;
+}
+
+.btn-finish {
+    background-color: #4d92e6;
+    border-color: #4d92e6;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.btns{
+    display: flex;
+    justify-content:flex-end;
+}
