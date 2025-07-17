@@ -3,7 +3,9 @@ import { Questions } from "./Questions.js"
 let startBtn=document.getElementById('startBtn')
 let leaderBoard=[]
 let name;
-let deptQuestion=document.getElementById('interfaceQ')
+let deptQuestion=document.getElementById('bigdiv')
+let nextBtn=document.getElementById('Next')
+let finishBtn=document.getElementById('Finish')
 
 startBtn.addEventListener('click',()=>{
     name=document.querySelector('[name=username]').value
@@ -11,8 +13,8 @@ startBtn.addEventListener('click',()=>{
         alert('Enter your name in input..')
         return
     }
-    document.getElementById('interface1').style.display='none'
-    deptQuestion.style.display='block'
+    hideElement(document.getElementById('interface1'))
+    showElement(deptQuestion)
 })
 
 //Questions
@@ -34,56 +36,90 @@ function getRandomQuestion(){
     }
 }
 
+const createElement=(tag,classes=[],text='')=>{
+    let element=document.createElement(tag)
+    classes.forEach((cls)=>{
+        element.classList.add(cls)
+    })
+    element.textContent=text
+    return element
+}
 
+const appendToParent=(parent,children)=>{
+    children.forEach((child)=>{
+        parent.appendChild(child)
+    })
+}
+
+const hideElement=(element)=>{
+    element.style.display='none'
+}
+
+const showElement=(element)=>{
+    element.style.display='block'
+}
 
 function renderQuestion(question){
-    document.getElementById('Next').style.display='none'
-    document.getElementById('questionNum').textContent=`Question ${index}/10`
-    document.querySelector('.progress-bar').style.width=`${index*10}%`  
+    hideElement(nextBtn)
 
-    let textQ=document.getElementById('questionText')
-    textQ.textContent=question.text
-    let optionsSection=document.getElementById('sectionOptions')
-    optionsSection.innerHTML=''
+    let Bigdiv=createElement('div',[])
+
+    let header=createElement('h1',[],`Quiz App`)
+
+    let progresscont=createElement('div',['progress-container'])
+    let progress=createElement('div',['progress-bar'])
+    progress.style.width=`${index*10}%`  
+
+    appendToParent(progresscont,[progress])
+
+    let numQ=createElement('h3',[],`Question ${index}/10`)
+
+    let textQ=createElement('h3',[],question.text)
+
+    let optionsSection=createElement('div',[])
     question.options.forEach((option)=>{
-        let div=document.createElement('div')
-        div.className='option-card'
-        div.innerHTML=`
-            <input type="radio"  name="option"  class="radio-input">
-            <label  class="radio-label" >${option}</label>
-        `
-        optionsSection.appendChild(div)
+        let div=createElement('div',['option-card'])
+        let input=createElement('input',['radio-input'])
+        input.type='radio'
+        input.name = 'option' 
+        let label=createElement('label',['radio-label'],option)
+
+        appendToParent(div,[input,label])
+
+        appendToParent(optionsSection,[div])
         
         div.addEventListener('click',()=>{
             Array.from(optionsSection.children).forEach((el)=>{
                 el.classList.remove('selected-option')
             })
             div.classList.add('selected-option')
-            div.querySelector('input').checked='true'      
+            div.querySelector('input').checked='true'    
+            console.log(div.querySelector('input'))  
             if(index==10){
-                document.getElementById('Next').style.display='none'
+                hideElement(nextBtn)
             }
             else{
-                document.getElementById('Next').style.display='block'
-                document.getElementById('Next').style.marginRight='auto'
+                showElement(nextBtn)
+                nextBtn.style.marginRight='auto'
             }
         })
     })
+
+        
+    appendToParent(Bigdiv,[header,progresscont,numQ,textQ,optionsSection])
+    deptQuestion.querySelector('div').innerHTML = ''
+    appendToParent(deptQuestion.querySelector('div'),[Bigdiv])
 }
 
-
 getRandomQuestion()
-document.getElementById('Next').addEventListener('click',()=>{
+nextBtn.addEventListener('click',()=>{
     checkAnswer()
-    if(index==10){
-        document.getElementById('Next').style.display='none'
-    }
     index+=1
     getRandomQuestion()
 })
 
 function checkAnswer(){
-    let inputs=document.querySelectorAll('input[type="radio"]')
+    let inputs=document.querySelectorAll('input[class="radio-input"]')
     let selectedOption;
     Array.from(inputs).forEach((el)=>{
         if(el.checked){
@@ -96,7 +132,7 @@ function checkAnswer(){
 }
 
 
-document.getElementById('Finish').addEventListener('click',()=>{
+finishBtn.addEventListener('click',()=>{
     checkAnswer()
     leaderBoard=JSON.parse(localStorage.getItem('board')) ||[]
     leaderBoard.push({username:name,score:mark})
@@ -106,7 +142,9 @@ document.getElementById('Finish').addEventListener('click',()=>{
 })
 
 function renderBoared(){
-    leaderBoard=JSON.parse(localStorage.getItem('board')) 
+    hideElement(nextBtn)
+    hideElement(finishBtn)
+    leaderBoard=JSON.parse(localStorage.getItem('board')) ||[]
     deptQuestion.innerHTML=`
         <h2>LeaderBoard 🎉🎉</h2>
 
