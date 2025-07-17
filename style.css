@@ -107,22 +107,27 @@ button{
     justify-content:flex-end;
 }
 
-.Leader{
-    display: flex;
-    justify-items: baseline;
-    margin: 10px auto;
+.Leader {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr; /* تقسيم السطر لثلاث أعمدة */
+  align-items: center;
+  gap: 10px;
 }
 
-
-.Leader h3{
-    margin-right: 20px;
-    font-size: 16px;
-    color: rgb(97, 9, 27);
+.Leader h3 {
+  font-size: 16px;
+  color: rgb(97, 9, 27);
+  text-align: center;
 }
 
-.Leader div{
-    background-color: #4d92e6;
-    margin-right: 5px;
-    margin-top: 16px;
-    height: 20px;
+.Leader div {
+  background-color: #4d92e6;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.Leader p {
+  font-weight: bold;
+  text-align: right;
+  margin: 0;
 }
