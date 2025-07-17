@@ -126,9 +126,11 @@ function checkAnswer(){
             selectedOption=el
         }
     })
-    if(selectedOption.nextElementSibling.textContent==currentQ.rightAnswer){
-        mark+=1
-    }
+    if(selectedOption){
+        if(selectedOption.nextElementSibling.textContent==currentQ.rightAnswer){
+            mark+=1
+        }
+    } 
 }
 
 
@@ -152,14 +154,12 @@ function renderBoared(){
     leaderBoard.sort((a,b)=>b.score-a.score)
 
     leaderBoard.forEach((item)=>{
-        let div=document.createElement('div')
-        div.classList.add('Leader')
-        div.innerHTML=`
-            <h3>${item.username}</h3>
-            <div style="width:${item.score*10}%;"></div>
-            <p>${item.score*10}%</p>
-
-        `
+        let div=createElement('div',['Leader'])
+        let header=createElement('h3',[],`${item.username}`)
+        let progress=createElement('div',[])
+        progress.style.width=`${item.score*10}%`
+        let score=createElement('p',[],`${item.score*10}%`)
+        appendToParent(div,[header,progress,score])
         deptQuestion.appendChild(div)
     })
 }
